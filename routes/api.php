@@ -20,15 +20,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/pivacy-policy','App\Http\Controllers\API\PrivacyPolicyController@show');
 
-Route::get('/users','App\Http\Controllers\API\UserController@index');
-Route::post('/users/create','App\Http\Controllers\API\UserController@store');
-Route::get('/users/{user}','App\Http\Controllers\API\UserController@show');
-Route::post('/users/update/{user}','App\Http\Controllers\API\UserController@update')->name('update');
-Route::delete('/users/delete/{user}','App\Http\Controllers\API\UserController@delete');
+Route::prefix('v1')->middleware('auth:api')->group(function(){
+    Route::get('/houses','App\Http\Controllers\API\HouseController@index');
+    Route::post('/houses/create','App\Http\Controllers\API\HouseController@store');
+    Route::get('/houses/edit/{house}','App\Http\Controllers\API\HouseController@show');
+    Route::post('/houses/update/{house}','App\Http\Controllers\API\HouseController@update');
+    Route::delete('/houses/delete/{house}','App\Http\Controllers\API\HouseController@delete');
 
-Route::get('/houses','App\Http\Controllers\API\HouseController@index');
-Route::post('/houses/create','App\Http\Controllers\API\HouseController@store');
-Route::get('/houses/edit/{house}','App\Http\Controllers\API\HouseController@show');
-Route::post('/houses/update/{house}','App\Http\Controllers\API\HouseController@update');
-Route::delete('/houses/delete/{house}','App\Http\Controllers\API\HouseController@delete');
+    Route::get('/users','App\Http\Controllers\API\UserController@index');
+    Route::post('/users/create','App\Http\Controllers\API\UserController@store');
+    Route::get('/users/{user}','App\Http\Controllers\API\UserController@show');
+    Route::post('/users/update/{user}','App\Http\Controllers\API\UserController@update')->name('update');
+    Route::delete('/users/delete/{user}','App\Http\Controllers\API\UserController@delete');
+});
+
+
+
+
 
