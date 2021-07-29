@@ -19,6 +19,7 @@ Route::get('/basic-auth', function () {
 })->middleware('auth.basic');
 
 Route::post('/login','App\Http\Controllers\API\AuthController@login');
+Route::post('/resetpassword','App\Http\Controllers\API\AuthController@sendResetLinkEmail');
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
