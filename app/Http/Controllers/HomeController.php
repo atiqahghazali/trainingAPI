@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\House;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $houses = House::all();
+        $purchases = Purchase::all();
+        return view('home', compact('houses','purchases'));
     }
 }
