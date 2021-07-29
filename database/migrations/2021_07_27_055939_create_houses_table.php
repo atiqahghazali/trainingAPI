@@ -16,7 +16,7 @@ class CreateHousesTable extends Migration
         Schema::create('houses', function (Blueprint $table) {
             $table->id();
             $table->string('type');
-            $table->string('price');
+            $table->float('price');
             $table->timestamps();
         });
     }
