@@ -54,7 +54,7 @@ class PurchaseController extends Controller
             'billDescription'=>'Rumah Pertama',
             'billAmount'=> $purchase->amount,
             'billReturnUrl'=>'http://127.0.0.1:8000/return/url',
-            'billCallbackUrl'=>'http://127.0.0.1:8000/return/url',
+            'billCallbackUrl'=>'http://127.0.0.1:8000/callback/url',
             'billExternalReferenceNo' => $purchase->id,
             'billTo'=> auth()->user()->name,
             'billEmail'=> auth()->user()->email,
