@@ -46,3 +46,9 @@ Route::get('/return/url', function (Request $request){
 
 
 });
+
+Route::post('/callback/url', function (Request $request){
+    // dd($request->all());
+    // return 'callback';
+    \info(['from payment gateway' => $request->all()]);
+    });
